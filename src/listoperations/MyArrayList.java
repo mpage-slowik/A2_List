@@ -105,7 +105,7 @@ public class MyArrayList<E> implements List{
 
     @Override
     public int size() {
-        return size;
+        return size-1;
     }
     
     
