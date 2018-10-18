@@ -27,9 +27,11 @@ public class ListTester {
         LinkedList<Integer> lList = new LinkedList<>();
         fill(myArr,N[0]);
         insertStart(myArr,N[0]);
-        insertEnd(myArr,N[0]);           
+        insertEnd(myArr,N[0]);
+        insertRandom(myArr,N[0]);
         removeStart(myArr,N[0]);
         removeEnd(myArr,N[0]);
+        removeRandom(myArr,N[0]);
         removeByValue(myArr,N[0]);
   
     }
