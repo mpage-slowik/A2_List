@@ -105,21 +105,20 @@ public class MyLinkedList<E> implements List{
         if(index >= size || isEmpty()){
             throw new IndexOutOfBoundsException("Index: "+index+" Size: "+size);
         }
+        if(index == size-1){
+            head = head.next;
+            head.prev = null;
+        }
+        else if(index ==0){
+            tail = tail.prev;
+            tail.next=null;
+        }
+        
         Node temp = head;
         for(int i = 0; i<size ;i++){
             if(i == index){
-                if(temp.equals(head)){
-                    head = temp.next;
-                    head.prev = null;
-                }
-                else if(temp.equals(tail)){
-                    tail = temp.prev;
-                    tail.next=null;
-                }
-                else{
-                    temp.next.prev = temp.prev;
-                    temp.prev.next = temp.next; 
-                }
+                temp.next.prev = temp.prev;
+                temp.prev.next = temp.next;
                 size--;
                 return temp; 
             }
@@ -129,22 +128,19 @@ public class MyLinkedList<E> implements List{
     }
     @Override
     public boolean remove(Object o) {
+        if(o.equals(head)){
+                    head = head.next;
+                    head.prev = null;
+                }
+                else if(o.equals(tail)){
+                    tail = tail.prev;
+                    tail.next=null;
+                }
         Node temp = head;
         for(int i = 0; i<size ;i++){
             if(temp.element.equals(o)){
-                remove(i);
-                if(temp.equals(head)){
-                    head = temp.next;
-                    head.prev = null;
-                }
-                else if(temp.equals(tail)){
-                    tail = temp.prev;
-                    tail.next=null;
-                }
-                else{
                     temp.next.prev = temp.prev;
                     temp.prev.next = temp.next; 
-                }
                 size--;
                 return true;
             }
