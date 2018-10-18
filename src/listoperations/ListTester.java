@@ -25,6 +25,7 @@ public class ListTester {
         MyLinkedList<Integer> myLList = new MyLinkedList<>();
         ArrayList<Integer> arr = new ArrayList<>();
         LinkedList<Integer> lList = new LinkedList<>();
+        
         fill(myArr,N[0]);
         insertStart(myArr,N[0]);
         insertEnd(myArr,N[0]);
@@ -43,37 +44,46 @@ public class ListTester {
         System.out.println(list.toString());
     }
     private static void insertStart(List<Integer> list, int N){
+        for(int i = 0; i<N;i++){
         int randomInt = (int)(2*(Math.random()*N));
-        list.add(randomInt);
+        list.add(0,randomInt);
+        }
+        System.out.println(list.toString());
         System.out.println(list.toString()); 
     }
     private static void insertEnd(List<Integer> list, int N){   
+
+        for(int i = 0; i<N;i++){
         int randomInt = (int)(2*(Math.random()*N));
         list.add(list.size(), randomInt);
-        System.out.println(list.toString());      
+        }
+        System.out.println(list.toString());    
     }
     private static void insertRandom(List<Integer> list, int N){
-        int randomLocation = (int)(Math.random()*N);
+        for(int i = 0; i<N;i++){
+        int randomLocation = (int)(Math.random()*(list.size()-1));
         int randomInt = (int)(2*(Math.random()*N));
         list.add(randomLocation, randomInt);
-        System.out.println(list.toString());   
+        }
+        System.out.println(list.toString()); 
     }
     private static void removeStart(List<Integer> list, int N){
         list.remove(0);
+        
         System.out.println(list.toString()); 
     }
     private static void removeEnd(List<Integer> list, int N){
-        list.remove(list.size());
+        list.remove(list.size()-1);
         System.out.println(list.toString());
     }
     private static void removeRandom(List<Integer> list, int N){
-        int randomLocation = (int)(Math.random()*N);
+        int randomLocation = (int)(Math.random()*(list.size()));
         list.remove(randomLocation);
         System.out.println(list.toString());      
     }
     private static void removeByValue(List<Integer> list, int N){
         int randomInt = (int)(2*(Math.random()*N));
-        list.remove(randomInt);
+        list.remove((Object)randomInt);
         System.out.println(list.toString());
     }    
     

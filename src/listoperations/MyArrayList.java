@@ -45,7 +45,7 @@ public class MyArrayList<E> implements List{
         else{
             resize();
             if(index <= size){
-                 E arr2[] = (E[])new Object[arr.length];
+                 E arr2[] = (E[])new Object[arr.length+1];
                  for(int i = index; i<size; i++){
                      arr2[i+1] = arr[i];
                  }
@@ -75,6 +75,7 @@ public class MyArrayList<E> implements List{
             throw new IndexOutOfBoundsException("Index: "+index+" Size: "+size);
         }
         else{
+            resize();
             E obj = arr[index];
             E arr2[] = (E[])new Object[arr.length];
                  for(int i = index; i<size; i++){
@@ -105,7 +106,7 @@ public class MyArrayList<E> implements List{
 
     @Override
     public int size() {
-        return size-1;
+        return size;
     }
     
     

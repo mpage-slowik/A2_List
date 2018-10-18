@@ -47,24 +47,21 @@ public class MyLinkedList<E> implements List{
         return size == 0;
     }
     @Override
-    public boolean add(Object e) {
-        
-        boolean added = false;
+    public boolean add(Object e) {       
         Node temp = new Node((E)e,null,null);
         if(size == 0){
             tail = temp;
             head = tail;
             size++;
-            added = true;
+            return true;
         }
         else{
             temp.prev = tail;
             tail.next = temp;
             tail = temp;
             size++;
-            added = true;
+            return true;
         }
-        return added;
     }
     @Override
     public void add(int index, Object element) {
