@@ -92,7 +92,7 @@ public class MyLinkedList<E> implements List {
         }
     }
 
-    @Override
+     @Override
     public Object remove(int index) {
         if (index >= size || isEmpty()) {
             throw new IndexOutOfBoundsException("Index: " + index + " Size: " + size);

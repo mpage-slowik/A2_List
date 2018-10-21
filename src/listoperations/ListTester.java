@@ -36,7 +36,7 @@ public class ListTester {
 //        long myArrayListRemoveEnd = removeEnd(myArr, N[0]);
 //        long myArrayListRemoveRandom = removeRandom(myArr, N[0]);
 //        long myArrayListRemoveByValue = removeByValue(myArr, N[0]);
-        for (int i = 0; i < N.length-2; i++) {
+        for (int i = 0; i < N.length - 2; i++) {
             System.out.println("N = " + N[i] + " | " + "Insert@start(ms) | Insert@end (ms) | Insert@random(ms) |");
             System.out.println("MyArrayList | " + insertStart(myArr, N[i]) + " | " + insertEnd(myArr, N[i]) + " | " + insertRandom(myArr, N[i]) + " |");
             System.out.println("ArrayList | " + insertStart(arr, N[i]) + " | " + insertEnd(arr, N[i]) + " | " + insertRandom(arr, N[i]) + " |");
@@ -58,7 +58,6 @@ public class ListTester {
             int randomInt = (int) (2 * (Math.random() * N));
             list.add(randomInt);
         }
-//        System.out.println(list.toString());
     }
 
     private static long insertStart(List<Integer> list, int N) {
