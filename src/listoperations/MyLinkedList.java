@@ -36,7 +36,7 @@ public class MyLinkedList<E> implements List {
 
     @Override
     public int size() {
-        return size - 1;
+        return size;
     }
 
     @Override
@@ -71,12 +71,12 @@ public class MyLinkedList<E> implements List {
         for (int i = 0; i < size; i++) {
             if (i == index) {
                 if (temp.equals(head)) {
-                    temp.prev = newNode;
+                    head.prev = newNode;
                     newNode.prev = null;
                     newNode.next = temp;
                     head = newNode;
                 } else if (temp.equals(tail)) {
-                    temp.next = newNode;
+                    tail.next = newNode;
                     newNode.prev = temp;
                     newNode.next = null;
                     tail = newNode;
@@ -89,6 +89,7 @@ public class MyLinkedList<E> implements List {
                 size++;
                 return;
             }
+            if(temp.next!=null)
             temp = temp.next;
         }
     }
@@ -98,20 +99,22 @@ public class MyLinkedList<E> implements List {
         if (index >= size || isEmpty()) {
             throw new IndexOutOfBoundsException("Index: " + index + " Size: " + size);
         }
-        if (index == (size - 1)) {
+        if (index == (size-1)) {
             Node temp = tail;
             tail = temp.prev;
             tail.next = null;
+            size--;
             return temp;
         } else if (index == 0) {
             Node temp = head;
             head = temp.next;
             head.prev = null;
+            size--;
             return temp;
 
         } else {
             Node temp = head;
-            for (int i = 0; i < size; i++) {
+            for (int i = 1; i < size-1; i++) {
                 if (i == index) {
                     Node n = temp.prev;
                     Node m = temp.next;
@@ -119,7 +122,7 @@ public class MyLinkedList<E> implements List {
                     m.prev = n;
                     size--;
                     return temp;
-                }
+                }else if(temp.next != null)
                 temp = temp.next;
             }
         }
@@ -132,22 +135,27 @@ public class MyLinkedList<E> implements List {
             Node temp = head;
             head = temp.next;
             head.prev = null;
+            size--;
             return true;
         } else if (o.equals(tail)) {
             Node temp = tail;
-            tail = tail.prev;
+            tail = temp.prev;
             tail.next = null;
+            size--;
             return true;
         } else {
             Node temp = head;
-            for (int i = 0; i < size; i++) {
+            for (int i = 1; i < size-1; i++) {
                 if (temp.element.equals(o)) {
-                    temp.next.prev = temp.prev;
-                    temp.prev.next = temp.next;
+                    Node n = temp.prev;
+                    Node m = temp.next;
+                    n.next = m;
+                    m.prev = n;
                     size--;
                     return true;
+                }else if(temp.next!= null){
+                    temp = temp.next;
                 }
-                temp = temp.next;
             }
         }
         return false;
