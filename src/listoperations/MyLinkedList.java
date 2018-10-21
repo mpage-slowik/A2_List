@@ -98,23 +98,30 @@ public class MyLinkedList<E> implements List {
         if (index >= size || isEmpty()) {
             throw new IndexOutOfBoundsException("Index: " + index + " Size: " + size);
         }
-        if (index == size - 1) {
-            tail = tail.prev;
+        if (index == (size - 1)) {
+            Node temp = tail;
+            tail = temp.prev;
             tail.next = null;
+            return temp;
         } else if (index == 0) {
-            head = head.next;
+            Node temp = head;
+            head = temp.next;
             head.prev = null;
+            return temp;
 
-        }
-        Node temp = head;
-        for (int i = 0; i < size; i++) {
-            if (i == index) {
-                temp.next.prev = temp.prev;
-                temp.prev.next = temp.next;
-                size--;
-                return temp;
+        } else {
+            Node temp = head;
+            for (int i = 0; i < size; i++) {
+                if (i == index) {
+                    Node n = temp.prev;
+                    Node m = temp.next;
+                    n.next = m;
+                    m.prev = n;
+                    size--;
+                    return temp;
+                }
+                temp = temp.next;
             }
-            temp = temp.next;
         }
         return null;
     }
@@ -122,21 +129,26 @@ public class MyLinkedList<E> implements List {
     @Override
     public boolean remove(Object o) {
         if (o.equals(head)) {
-            head = head.next;
+            Node temp = head;
+            head = temp.next;
             head.prev = null;
+            return true;
         } else if (o.equals(tail)) {
+            Node temp = tail;
             tail = tail.prev;
             tail.next = null;
-        }
-        Node temp = head;
-        for (int i = 0; i < size; i++) {
-            if (temp.element.equals(o)) {
-                temp.next.prev = temp.prev;
-                temp.prev.next = temp.next;
-                size--;
-                return true;
+            return true;
+        } else {
+            Node temp = head;
+            for (int i = 0; i < size; i++) {
+                if (temp.element.equals(o)) {
+                    temp.next.prev = temp.prev;
+                    temp.prev.next = temp.next;
+                    size--;
+                    return true;
+                }
+                temp = temp.next;
             }
-            temp = temp.next;
         }
         return false;
     }
