@@ -9,6 +9,7 @@ import java.util.ListIterator;
  *
  * @author Max Page-Slowik
  * @author Jesse Silber
+ * @param <E>
  *
  */
 public class MyArrayList<E> implements List {
@@ -26,6 +27,12 @@ public class MyArrayList<E> implements List {
         this.size = 0;
     }
 
+    /**
+     * Adds object to the list
+     *
+     * @param e
+     * @return boolean
+     */
     @Override
     public boolean add(Object e) {
         boolean added = false;
@@ -38,6 +45,12 @@ public class MyArrayList<E> implements List {
         return added;
     }
 
+    /**
+     * Adds element to list based on index.
+     *
+     * @param index
+     * @param element
+     */
     @Override
     public void add(int index, Object element) {
         if (index > size) {
@@ -62,12 +75,21 @@ public class MyArrayList<E> implements List {
         }
     }
 
+    /**
+     * Clears the size and array
+     */
     @Override
     public void clear() {
         size = 0;
         arr = (E[]) new Object[10];
     }
 
+    /**
+     * Removes element from list based on index
+     *
+     * @param index
+     * @return The object that was removed
+     */
     @Override
     public Object remove(int index) {
         if (index >= size || isEmpty()) {
@@ -88,6 +110,12 @@ public class MyArrayList<E> implements List {
         }
     }
 
+    /**
+     * Removes a specific element from the list
+     *
+     * @param o
+     * @return boolean
+     */
     @Override
     public boolean remove(Object o) {
         if (!isEmpty()) {
@@ -102,6 +130,11 @@ public class MyArrayList<E> implements List {
 
     }
 
+    /**
+     * Returns the size of the list
+     *
+     * @return int
+     */
     @Override
     public int size() {
         return size;
@@ -138,6 +171,11 @@ public class MyArrayList<E> implements List {
         return sb.toString();
     }
 
+    /**
+     * Checks to see if size is empty
+     *
+     * @return boolean
+     */
     @Override
     public boolean isEmpty() {
         return size == 0;
@@ -145,82 +183,82 @@ public class MyArrayList<E> implements List {
 
     @Override
     public boolean contains(Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 
     @Override
     public Iterator iterator() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 
     @Override
     public Object[] toArray() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 
     @Override
     public Object[] toArray(Object[] a) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 
     @Override
     public boolean containsAll(Collection c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 
     @Override
     public boolean addAll(Collection c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 
     @Override
     public boolean addAll(int index, Collection c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 
     @Override
     public boolean removeAll(Collection c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 
     @Override
     public boolean retainAll(Collection c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 
     @Override
     public Object get(int index) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 
     @Override
     public Object set(int index, Object element) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 
     @Override
     public int indexOf(Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 
     @Override
     public int lastIndexOf(Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 
     @Override
     public ListIterator listIterator() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 
     @Override
     public ListIterator listIterator(int index) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 
     @Override
     public List subList(int fromIndex, int toIndex) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 
 }

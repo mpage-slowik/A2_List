@@ -3,7 +3,6 @@ package listoperations;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
 
 /**
  *
@@ -15,7 +14,9 @@ public class ListTester {
     public ListTester() {
 
     }
-
+    /**
+     * Runs insert and remove methods on the different collections.
+     */
     public static void run() {
         int N[] = {10, 100, 1000, 10000, 100000, 1000000};
         MyArrayList<Integer> myArr = new MyArrayList<>();
@@ -29,14 +30,7 @@ public class ListTester {
         fill(myLList, N[0]);
         fill(lList, N[0]);
 
-//        long myArrayListInsertStart = insertStart(myArr, N[0]);
-//        long myArrayListInsertEnd = insertEnd(myArr, N[0]);
-//        long myArrayListInsertRandom = insertRandom(myArr, N[0]);
-//        long myArrayListRemoveStart = removeStart(myArr, N[0]);
-//        long myArrayListRemoveEnd = removeEnd(myArr, N[0]);
-//        long myArrayListRemoveRandom = removeRandom(myArr, N[0]);
-//        long myArrayListRemoveByValue = removeByValue(myArr, N[0]);
-        for (int i = 0; i < N.length - 2; i++) {
+        for (int i = 0; i < N.length - 1; i++) {
             System.out.println("N = " + N[i] + " | " + "Insert@start(ms) | Insert@end (ms) | Insert@random(ms) |");
             System.out.println("MyArrayList | " + insertStart(myArr, N[i]) + " | " + insertEnd(myArr, N[i]) + " | " + insertRandom(myArr, N[i]) + " |");
             System.out.println("ArrayList | " + insertStart(arr, N[i]) + " | " + insertEnd(arr, N[i]) + " | " + insertRandom(arr, N[i]) + " |");
@@ -48,9 +42,7 @@ public class ListTester {
             System.out.println("ArrayList | " + removeStart(arr, N[i]) + " | " + removeEnd(arr, N[i]) + " | " + removeRandom(arr, N[i]) + " | " + removeByValue(arr, N[i]) + " |");
             System.out.println("MyLinkedList | " + removeStart(myLList, N[i]) + " | " + removeEnd(myLList, N[i]) + " | " + removeRandom(myLList, N[i]) + " | " + removeByValue(myLList, N[i]) + " |");
             System.out.println("LinkedList | " + removeStart(lList, N[i]) + " | " + removeEnd(lList, N[i]) + " | " + removeRandom(lList, N[i]) + " | " + removeByValue(lList, N[i]) + " |");
-
         }
-
     }
 
     private static void fill(List<Integer> list, int N) {
@@ -69,14 +61,13 @@ public class ListTester {
         }
         long endTime = System.currentTimeMillis();
         return (endTime - startTime);
-
     }
 
     private static long insertEnd(List<Integer> list, int N) {
         long startTime = System.currentTimeMillis();
         for (int i = 0; i < N; i++) {
             int randomInt = (int) (2 * (Math.random() * N));
-            list.add(list.size()-1, randomInt);
+            list.add(list.size() - 1, randomInt);
         }
         long endTime = System.currentTimeMillis();
         return (endTime - startTime);
@@ -109,7 +100,7 @@ public class ListTester {
 
     private static long removeRandom(List<Integer> list, int N) {
         long startTime = System.currentTimeMillis();
-        int randomLocation = (int) (Math.random() * (list.size()-1));
+        int randomLocation = (int) (Math.random() * (list.size() - 1));
         list.remove(randomLocation);
         long endTime = System.currentTimeMillis();
         return (endTime - startTime);
@@ -117,13 +108,13 @@ public class ListTester {
 
     private static long removeByValue(List<Integer> list, int N) {
         long startTime = System.currentTimeMillis();
-        int randomInt = (int) (2 * (Math.random() * N)); 
-        boolean removed= list.remove((Integer)randomInt);
+        int randomInt = (int) (2 * (Math.random() * N));
+        boolean removed = list.remove((Integer) randomInt);
         long endTime = System.currentTimeMillis();
-        while(!removed){
+        while (!removed) {
             startTime = System.currentTimeMillis();
-            randomInt = (int) (2 * (Math.random() * N)); 
-            removed= list.remove((Integer)randomInt);
+            randomInt = (int) (2 * (Math.random() * N));
+            removed = list.remove((Integer) randomInt);
             endTime = System.currentTimeMillis();
         }
         return (endTime - startTime);
