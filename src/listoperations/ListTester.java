@@ -36,7 +36,7 @@ public class ListTester {
 //        long myArrayListRemoveEnd = removeEnd(myArr, N[0]);
 //        long myArrayListRemoveRandom = removeRandom(myArr, N[0]);
 //        long myArrayListRemoveByValue = removeByValue(myArr, N[0]);
-        for (int i = 0; i < N.length; i++) {
+        for (int i = 0; i < N.length-2; i++) {
             System.out.println("N = " + N[i] + " | " + "Insert@start(ms) | Insert@end (ms) | Insert@random(ms) |");
             System.out.println("MyArrayList | " + insertStart(myArr, N[i]) + " | " + insertEnd(myArr, N[i]) + " | " + insertRandom(myArr, N[i]) + " |");
             System.out.println("ArrayList | " + insertStart(arr, N[i]) + " | " + insertEnd(arr, N[i]) + " | " + insertRandom(arr, N[i]) + " |");
@@ -46,7 +46,7 @@ public class ListTester {
             System.out.println("N = " + N[i] + " | " + "Remove@start(ms) | Remove@end (ms) | Remove@random(ms) | Remove byvalue (ms) |");
             System.out.println("MyArrayList | " + removeStart(myArr, N[i]) + " | " + removeEnd(myArr, N[i]) + " | " + removeRandom(myArr, N[i]) + " | " + removeByValue(myArr, N[i]) + " |");
             System.out.println("ArrayList | " + removeStart(arr, N[i]) + " | " + removeEnd(arr, N[i]) + " | " + removeRandom(arr, N[i]) + " | " + removeByValue(arr, N[i]) + " |");
-            System.out.println("MyLinkedList | " + removeStart(myLList, N[0]) + " | " + removeEnd(myLList, N[0]) + " | " + removeRandom(myLList, N[0]) + " | " + removeByValue(myLList, N[0]) + " |");
+            System.out.println("MyLinkedList | " + removeStart(myLList, N[i]) + " | " + removeEnd(myLList, N[i]) + " | " + removeRandom(myLList, N[i]) + " | " + removeByValue(myLList, N[i]) + " |");
             System.out.println("LinkedList | " + removeStart(lList, N[i]) + " | " + removeEnd(lList, N[i]) + " | " + removeRandom(lList, N[i]) + " | " + removeByValue(lList, N[i]) + " |");
 
         }
