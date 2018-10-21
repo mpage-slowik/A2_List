@@ -76,7 +76,7 @@ public class ListTester {
         long startTime = System.currentTimeMillis();
         for (int i = 0; i < N; i++) {
             int randomInt = (int) (2 * (Math.random() * N));
-            list.add(list.size(), randomInt);
+            list.add(list.size()-1, randomInt);
         }
         long endTime = System.currentTimeMillis();
         return (endTime - startTime);
@@ -109,7 +109,7 @@ public class ListTester {
 
     private static long removeRandom(List<Integer> list, int N) {
         long startTime = System.currentTimeMillis();
-        int randomLocation = (int) (Math.random() * (list.size()));
+        int randomLocation = (int) (Math.random() * (list.size()-1));
         list.remove(randomLocation);
         long endTime = System.currentTimeMillis();
         return (endTime - startTime);
@@ -117,9 +117,15 @@ public class ListTester {
 
     private static long removeByValue(List<Integer> list, int N) {
         long startTime = System.currentTimeMillis();
-        int randomInt = (int) (2 * (Math.random() * N));
-        list.remove((Object) randomInt);
+        int randomInt = (int) (2 * (Math.random() * N)); 
+        boolean removed= list.remove((Integer)randomInt);
         long endTime = System.currentTimeMillis();
+        while(!removed){
+            startTime = System.currentTimeMillis();
+            randomInt = (int) (2 * (Math.random() * N)); 
+            removed= list.remove((Integer)randomInt);
+            endTime = System.currentTimeMillis();
+        }
         return (endTime - startTime);
     }
 
