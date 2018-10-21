@@ -46,7 +46,7 @@ public class ListTester {
             System.out.println("N = " + N[i] + " | " + "Remove@start(ms) | Remove@end (ms) | Remove@random(ms) | Remove byvalue (ms) |");
             System.out.println("MyArrayList | " + removeStart(myArr, N[i]) + " | " + removeEnd(myArr, N[i]) + " | " + removeRandom(myArr, N[i]) + " | " + removeByValue(myArr, N[i]) + " |");
             System.out.println("ArrayList | " + removeStart(arr, N[i]) + " | " + removeEnd(arr, N[i]) + " | " + removeRandom(arr, N[i]) + " | " + removeByValue(arr, N[i]) + " |");
-//        System.out.println("MyLinkedList | " + removeStart(myLList, N[0]) + " | " + removeEnd(myLList, N[0]) + " | " + removeRandom(myLList, N[0]) + " | " + removeByValue(myLList, N[0]) + " |");
+            System.out.println("MyLinkedList | " + removeStart(myLList, N[0]) + " | " + removeEnd(myLList, N[0]) + " | " + removeRandom(myLList, N[0]) + " | " + removeByValue(myLList, N[0]) + " |");
             System.out.println("LinkedList | " + removeStart(lList, N[i]) + " | " + removeEnd(lList, N[i]) + " | " + removeRandom(lList, N[i]) + " | " + removeByValue(lList, N[i]) + " |");
 
         }
@@ -97,7 +97,6 @@ public class ListTester {
     private static long removeStart(List<Integer> list, int N) {
         long startTime = System.currentTimeMillis();
         list.remove(0);
-
         long endTime = System.currentTimeMillis();
         return (endTime - startTime);
     }
