@@ -69,7 +69,6 @@ public class ListTester {
     }
     private static void removeStart(List<Integer> list, int N){
         list.remove(0);
-        
         System.out.println(list.toString()); 
     }
     private static void removeEnd(List<Integer> list, int N){

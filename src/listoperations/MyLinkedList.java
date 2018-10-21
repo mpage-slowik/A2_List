@@ -103,14 +103,14 @@ public class MyLinkedList<E> implements List{
             throw new IndexOutOfBoundsException("Index: "+index+" Size: "+size);
         }
         if(index == size-1){
-            head = head.next;
-            head.prev = null;
-        }
-        else if(index ==0){
             tail = tail.prev;
             tail.next=null;
         }
-        
+        else if(index ==0){
+            head = head.next;
+            head.prev = null;
+
+        }
         Node temp = head;
         for(int i = 0; i<size ;i++){
             if(i == index){
