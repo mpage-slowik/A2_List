@@ -192,6 +192,9 @@ public class MyLinkedList<E> implements List {
                 } else if (temp.next != null) {
                     temp = temp.next;
                 }
+                else{
+                    return false;
+                }
             }
         }
         return false;
