@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package listoperations;
 
 import java.util.ArrayList;
@@ -13,78 +8,121 @@ import java.util.Random;
 /**
  *
  * @author Max Page-Slowik
+ * @author Jesse Silber
  */
 public class ListTester {
-    
-    public ListTester(){
-        
+
+    public ListTester() {
+
     }
-    public static void run(){
-        int N[] = {10,100,1000,10000,100000,1000000};
+
+    public static void run() {
+        int N[] = {10, 100, 1000, 10000, 100000, 1000000};
         MyArrayList<Integer> myArr = new MyArrayList<>();
         MyLinkedList<Integer> myLList = new MyLinkedList<>();
         ArrayList<Integer> arr = new ArrayList<>();
         LinkedList<Integer> lList = new LinkedList<>();
-        
-        fill(myArr,N[0]);
-        insertStart(myArr,N[0]);
-        insertEnd(myArr,N[0]);
-        insertRandom(myArr,N[0]);
-        removeStart(myArr,N[0]);
-        removeEnd(myArr,N[0]);
-        removeRandom(myArr,N[0]);
-        removeByValue(myArr,N[0]);
-  
+
+        fill(myArr, N[0]);
+        fill(arr, N[0]);
+
+        fill(myLList, N[0]);
+        fill(lList, N[0]);
+
+//        long myArrayListInsertStart = insertStart(myArr, N[0]);
+//        long myArrayListInsertEnd = insertEnd(myArr, N[0]);
+//        long myArrayListInsertRandom = insertRandom(myArr, N[0]);
+//        long myArrayListRemoveStart = removeStart(myArr, N[0]);
+//        long myArrayListRemoveEnd = removeEnd(myArr, N[0]);
+//        long myArrayListRemoveRandom = removeRandom(myArr, N[0]);
+//        long myArrayListRemoveByValue = removeByValue(myArr, N[0]);
+        for (int i = 0; i < N.length; i++) {
+            System.out.println("N = " + N[i] + " | " + "Insert@start(ms) | Insert@end (ms) | Insert@random(ms) |");
+            System.out.println("MyArrayList | " + insertStart(myArr, N[i]) + " | " + insertEnd(myArr, N[i]) + " | " + insertRandom(myArr, N[i]) + " |");
+            System.out.println("ArrayList | " + insertStart(arr, N[i]) + " | " + insertEnd(arr, N[i]) + " | " + insertRandom(arr, N[i]) + " |");
+            System.out.println("MyLinkedList | " + insertStart(myLList, N[i]) + " | " + insertEnd(myLList, N[i]) + " | " + insertRandom(myLList, N[i]) + " |");
+            System.out.println("LinkedList | " + insertStart(lList, N[i]) + " | " + insertEnd(lList, N[i]) + " | " + insertRandom(lList, N[i]) + " |");
+
+            System.out.println("N = " + N[i] + " | " + "Remove@start(ms) | Remove@end (ms) | Remove@random(ms) | Remove byvalue (ms) |");
+            System.out.println("MyArrayList | " + removeStart(myArr, N[i]) + " | " + removeEnd(myArr, N[i]) + " | " + removeRandom(myArr, N[i]) + " | " + removeByValue(myArr, N[i]) + " |");
+            System.out.println("ArrayList | " + removeStart(arr, N[i]) + " | " + removeEnd(arr, N[i]) + " | " + removeRandom(arr, N[i]) + " | " + removeByValue(arr, N[i]) + " |");
+//        System.out.println("MyLinkedList | " + removeStart(myLList, N[0]) + " | " + removeEnd(myLList, N[0]) + " | " + removeRandom(myLList, N[0]) + " | " + removeByValue(myLList, N[0]) + " |");
+            System.out.println("LinkedList | " + removeStart(lList, N[i]) + " | " + removeEnd(lList, N[i]) + " | " + removeRandom(lList, N[i]) + " | " + removeByValue(lList, N[i]) + " |");
+
+        }
+
     }
-    private static void fill(List<Integer> list, int N){
-        for(int i = 0; i<N;i++){
-            int randomInt = (int)(2*(Math.random()*N));
+
+    private static void fill(List<Integer> list, int N) {
+        for (int i = 0; i < N; i++) {
+            int randomInt = (int) (2 * (Math.random() * N));
             list.add(randomInt);
         }
-        System.out.println(list.toString());
+//        System.out.println(list.toString());
     }
-    private static void insertStart(List<Integer> list, int N){
-        for(int i = 0; i<N;i++){
-        int randomInt = (int)(2*(Math.random()*N));
-        list.add(0,randomInt);
-        }
-        System.out.println(list.toString());
-        System.out.println(list.toString()); 
-    }
-    private static void insertEnd(List<Integer> list, int N){   
 
-        for(int i = 0; i<N;i++){
-        int randomInt = (int)(2*(Math.random()*N));
-        list.add(list.size(), randomInt);
+    private static long insertStart(List<Integer> list, int N) {
+        long startTime = System.currentTimeMillis();
+
+        for (int i = 0; i < N; i++) {
+            int randomInt = (int) (2 * (Math.random() * N));
+            list.add(0, randomInt);
         }
-        System.out.println(list.toString());    
+        long endTime = System.currentTimeMillis();
+        return (endTime - startTime);
+
     }
-    private static void insertRandom(List<Integer> list, int N){
-        for(int i = 0; i<N;i++){
-        int randomLocation = (int)(Math.random()*(list.size()-1));
-        int randomInt = (int)(2*(Math.random()*N));
-        list.add(randomLocation, randomInt);
+
+    private static long insertEnd(List<Integer> list, int N) {
+        long startTime = System.currentTimeMillis();
+        for (int i = 0; i < N; i++) {
+            int randomInt = (int) (2 * (Math.random() * N));
+            list.add(list.size(), randomInt);
         }
-        System.out.println(list.toString()); 
+        long endTime = System.currentTimeMillis();
+        return (endTime - startTime);
     }
-    private static void removeStart(List<Integer> list, int N){
+
+    private static long insertRandom(List<Integer> list, int N) {
+        long startTime = System.currentTimeMillis();
+        for (int i = 0; i < N; i++) {
+            int randomLocation = (int) (Math.random() * (list.size() - 1));
+            int randomInt = (int) (2 * (Math.random() * N));
+            list.add(randomLocation, randomInt);
+        }
+        long endTime = System.currentTimeMillis();
+        return (endTime - startTime);
+    }
+
+    private static long removeStart(List<Integer> list, int N) {
+        long startTime = System.currentTimeMillis();
         list.remove(0);
-        
-        System.out.println(list.toString()); 
+
+        long endTime = System.currentTimeMillis();
+        return (endTime - startTime);
     }
-    private static void removeEnd(List<Integer> list, int N){
-        list.remove(list.size()-1);
-        System.out.println(list.toString());
+
+    private static long removeEnd(List<Integer> list, int N) {
+        long startTime = System.currentTimeMillis();
+        list.remove(list.size() - 1);
+        long endTime = System.currentTimeMillis();
+        return (endTime - startTime);
     }
-    private static void removeRandom(List<Integer> list, int N){
-        int randomLocation = (int)(Math.random()*(list.size()));
+
+    private static long removeRandom(List<Integer> list, int N) {
+        long startTime = System.currentTimeMillis();
+        int randomLocation = (int) (Math.random() * (list.size()));
         list.remove(randomLocation);
-        System.out.println(list.toString());      
+        long endTime = System.currentTimeMillis();
+        return (endTime - startTime);
     }
-    private static void removeByValue(List<Integer> list, int N){
-        int randomInt = (int)(2*(Math.random()*N));
-        list.remove((Object)randomInt);
-        System.out.println(list.toString());
-    }    
-    
+
+    private static long removeByValue(List<Integer> list, int N) {
+        long startTime = System.currentTimeMillis();
+        int randomInt = (int) (2 * (Math.random() * N));
+        list.remove((Object) randomInt);
+        long endTime = System.currentTimeMillis();
+        return (endTime - startTime);
+    }
+
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package listoperations;
 
 import java.util.Collection;
@@ -13,49 +8,51 @@ import java.util.ListIterator;
 /**
  *
  * @author Max Page-Slowik
+ * @author Jesse Silber
  */
-public class MyLinkedList<E> implements List{
-    
-    private class Node{
+public class MyLinkedList<E> implements List {
+
+    private class Node {
+
         E element;
         Node next;
         Node prev;
-        
-        public Node(E element, Node next, Node prev){
+
+        public Node(E element, Node next, Node prev) {
             this.element = element;
             this.next = next;
             this.prev = prev;
         }
-        
+
     }
-    
+
     private Node head;
     private Node tail;
     private int size;
 
-    public MyLinkedList(){
-        size =0;
+    public MyLinkedList() {
+        size = 0;
     }
-    
+
     @Override
     public int size() {
-    return size-1;    
+        return size - 1;
     }
 
     @Override
     public boolean isEmpty() {
         return size == 0;
     }
+
     @Override
-    public boolean add(Object e) {       
-        Node temp = new Node((E)e,null,null);
-        if(size == 0){
+    public boolean add(Object e) {
+        Node temp = new Node((E) e, null, null);
+        if (size == 0) {
             tail = temp;
             head = tail;
             size++;
             return true;
-        }
-        else{
+        } else {
             temp.prev = tail;
             tail.next = temp;
             tail = temp;
@@ -63,28 +60,27 @@ public class MyLinkedList<E> implements List{
             return true;
         }
     }
+
     @Override
     public void add(int index, Object element) {
-        if(index > size){
-            throw new IndexOutOfBoundsException("Index: "+index+" Size: "+size);
+        if (index > size) {
+            throw new IndexOutOfBoundsException("Index: " + index + " Size: " + size);
         }
         Node temp = head;
-        Node newNode = new Node((E)element,null,null);
-        for(int i = 0; i<size ;i++){
-            if(i == index){
-                if(temp.equals(head)){                   
+        Node newNode = new Node((E) element, null, null);
+        for (int i = 0; i < size; i++) {
+            if (i == index) {
+                if (temp.equals(head)) {
                     temp.prev = newNode;
                     newNode.prev = null;
                     newNode.next = temp;
                     head = newNode;
-                }
-                else if(temp.equals(tail)){
+                } else if (temp.equals(tail)) {
                     temp.next = newNode;
                     newNode.prev = temp;
                     newNode.next = null;
                     tail = newNode;
-                }
-                else{
+                } else {
                     newNode.prev = temp.prev;
                     newNode.next = temp;
                     temp.prev = newNode;
@@ -99,45 +95,44 @@ public class MyLinkedList<E> implements List{
 
     @Override
     public Object remove(int index) {
-        if(index >= size || isEmpty()){
-            throw new IndexOutOfBoundsException("Index: "+index+" Size: "+size);
+        if (index >= size || isEmpty()) {
+            throw new IndexOutOfBoundsException("Index: " + index + " Size: " + size);
         }
-        if(index == size-1){
+        if (index == size - 1) {
             head = head.next;
             head.prev = null;
-        }
-        else if(index ==0){
+        } else if (index == 0) {
             tail = tail.prev;
-            tail.next=null;
+            tail.next = null;
         }
-        
+
         Node temp = head;
-        for(int i = 0; i<size ;i++){
-            if(i == index){
+        for (int i = 0; i < size; i++) {
+            if (i == index) {
                 temp.next.prev = temp.prev;
                 temp.prev.next = temp.next;
                 size--;
-                return temp; 
+                return temp;
             }
             temp = temp.next;
         }
         return null;
     }
+
     @Override
     public boolean remove(Object o) {
-        if(o.equals(head)){
-                    head = head.next;
-                    head.prev = null;
-                }
-                else if(o.equals(tail)){
-                    tail = tail.prev;
-                    tail.next=null;
-                }
+        if (o.equals(head)) {
+            head = head.next;
+            head.prev = null;
+        } else if (o.equals(tail)) {
+            tail = tail.prev;
+            tail.next = null;
+        }
         Node temp = head;
-        for(int i = 0; i<size ;i++){
-            if(temp.element.equals(o)){
-                    temp.next.prev = temp.prev;
-                    temp.prev.next = temp.next; 
+        for (int i = 0; i < size; i++) {
+            if (temp.element.equals(o)) {
+                temp.next.prev = temp.prev;
+                temp.prev.next = temp.next;
                 size--;
                 return true;
             }
@@ -152,23 +147,23 @@ public class MyLinkedList<E> implements List{
         tail = null;
         head = null;
     }
-    
+
     @Override
-    public String toString(){       
-        if(isEmpty()){
+    public String toString() {
+        if (isEmpty()) {
             return "[]";
         }
         StringBuilder sb = new StringBuilder();
         Node temp = head;
         sb.append("[");
-        for(int i = 0; i<size ;i++){
+        for (int i = 0; i < size; i++) {
             sb.append(temp.element).append(",");
             temp = temp.next;
         }
         sb.deleteCharAt(sb.lastIndexOf(",")).append("]");
         return sb.toString();
     }
-    
+
     @Override
     public boolean contains(Object o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -189,7 +184,6 @@ public class MyLinkedList<E> implements List{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
     @Override
     public boolean containsAll(Collection c) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -215,7 +209,6 @@ public class MyLinkedList<E> implements List{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-
     @Override
     public Object get(int index) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -226,7 +219,6 @@ public class MyLinkedList<E> implements List{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
- 
     @Override
     public int indexOf(Object o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -251,5 +243,5 @@ public class MyLinkedList<E> implements List{
     public List subList(int fromIndex, int toIndex) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

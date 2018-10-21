@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package listoperations;
 
 import java.util.ArrayList;
@@ -10,6 +5,7 @@ import java.util.ArrayList;
 /**
  *
  * @author Max Page-Slowik
+ * @author Jesse Silber
  */
 public class ListOperations {
 
@@ -18,9 +14,8 @@ public class ListOperations {
      */
     public static void main(String[] args) {
 
-        
         ListTester.run();
-        
+
 //        MyLinkedList<String> ll = new MyLinkedList<>();
 //        ll.add("Joe");
 //        ll.add("Sally");
@@ -30,7 +25,6 @@ public class ListOperations {
 //        System.out.println(ll.toString());
 //        ll.remove(1);
 //        System.out.println(ll.toString());
-
 //       MyArrayList<Integer> arr = new MyArrayList<>();
 //       arr.add(1);
 //              System.out.println(arr.toString());
@@ -56,5 +50,5 @@ public class ListOperations {
 //       arr.clear();
 //       System.out.println(arr.toString());
     }
-    
+
 }

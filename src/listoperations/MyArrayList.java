@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package listoperations;
 
 import java.util.Collection;
@@ -13,88 +8,91 @@ import java.util.ListIterator;
 /**
  *
  * @author Max Page-Slowik
- * 
+ * @author Jesse Silber
+ *
  */
-public class MyArrayList<E> implements List{
+public class MyArrayList<E> implements List {
+
     private E arr[];
     private int size;
-    public MyArrayList(){
+
+    public MyArrayList() {
         arr = (E[]) new Object[10];
         size = 0;
     }
-    public MyArrayList(int size){
+
+    public MyArrayList(int size) {
         arr = (E[]) new Object[size];
         this.size = 0;
     }
+
     @Override
     public boolean add(Object e) {
         boolean added = false;
-        if(arr!=null){
+        if (arr != null) {
             resize();
-            arr[size] = (E)e;
+            arr[size] = (E) e;
             size++;
             added = true;
         }
         return added;
     }
-   @Override
+
+    @Override
     public void add(int index, Object element) {
-        if(index > size){
-            throw new IndexOutOfBoundsException("Index: "+index+" Size: "+size);
-        }
-        else{
+        if (index > size) {
+            throw new IndexOutOfBoundsException("Index: " + index + " Size: " + size);
+        } else {
             resize();
-            if(index <= size){
-                 E arr2[] = (E[])new Object[arr.length+1];
-                 for(int i = index; i<size; i++){
-                     arr2[i+1] = arr[i];
-                 }
-                 arr2[index] = (E)element;
-                 for(int i = 0; i<index;i++){
-                     arr2[i] = arr[i];
-                 }
-                 arr = arr2;
-                 size++;
-            }
-            else{
-                arr[index] = (E)element;
+            if (index <= size) {
+                E arr2[] = (E[]) new Object[arr.length + 1];
+                for (int i = index; i < size; i++) {
+                    arr2[i + 1] = arr[i];
+                }
+                arr2[index] = (E) element;
+                for (int i = 0; i < index; i++) {
+                    arr2[i] = arr[i];
+                }
+                arr = arr2;
+                size++;
+            } else {
+                arr[index] = (E) element;
                 size++;
             }
         }
     }
-    
+
     @Override
     public void clear() {
         size = 0;
-        arr = (E[])new Object[10];      
+        arr = (E[]) new Object[10];
     }
-    
+
     @Override
     public Object remove(int index) {
-        if(index >= size || isEmpty()){
-            throw new IndexOutOfBoundsException("Index: "+index+" Size: "+size);
-        }
-        else{
+        if (index >= size || isEmpty()) {
+            throw new IndexOutOfBoundsException("Index: " + index + " Size: " + size);
+        } else {
             resize();
             E obj = arr[index];
-            E arr2[] = (E[])new Object[arr.length];
-                 for(int i = index; i<size; i++){
-                     arr2[i] = arr[(i+1)];
-                 }
-                 for(int i = 0; i<index;i++){
-                     arr2[i] = arr[i];
-                 }
-                 arr = arr2;
-                 size--;
+            E arr2[] = (E[]) new Object[arr.length];
+            for (int i = index; i < size; i++) {
+                arr2[i] = arr[(i + 1)];
+            }
+            for (int i = 0; i < index; i++) {
+                arr2[i] = arr[i];
+            }
+            arr = arr2;
+            size--;
             return obj;
-        }   
+        }
     }
 
     @Override
     public boolean remove(Object o) {
-        if(!isEmpty()){
-            for(int i = 0; i < size; i++){
-                if(arr[i].equals(o)){
+        if (!isEmpty()) {
+            for (int i = 0; i < size; i++) {
+                if (arr[i].equals(o)) {
                     remove(i);
                     return true;
                 }
@@ -108,45 +106,43 @@ public class MyArrayList<E> implements List{
     public int size() {
         return size;
     }
-    
-    
-    private void resize(){
-        if( size >= arr.length-2){
-            E arr2[] = (E[])new Object[(arr.length*2)];
-            moveArray(arr2); 
-        }
-        else if ( Math.floor(arr.length/4) > size){
-            E arr2[] = (E[])new Object[(arr.length/2)];
-            moveArray(arr2);          
+
+    private void resize() {
+        if (size >= arr.length - 2) {
+            E arr2[] = (E[]) new Object[(arr.length * 2)];
+            moveArray(arr2);
+        } else if (Math.floor(arr.length / 4) > size) {
+            E arr2[] = (E[]) new Object[(arr.length / 2)];
+            moveArray(arr2);
         }
     }
-    
-    private void moveArray(E[] arr2){
-        for(int i =0; i<size; i++){
+
+    private void moveArray(E[] arr2) {
+        for (int i = 0; i < size; i++) {
             arr2[i] = arr[i];
         }
         arr = arr2;
     }
-    
+
     @Override
-    public String toString(){
-        if(isEmpty()){
+    public String toString() {
+        if (isEmpty()) {
             return "[]";
         }
         StringBuilder sb = new StringBuilder();
         sb.append("[");
-        for (int i = 0; i <size; i++){
+        for (int i = 0; i < size; i++) {
             sb.append(arr[i]).append(",");
         }
         sb.deleteCharAt(sb.lastIndexOf(",")).append("]");
         return sb.toString();
     }
-    
+
     @Override
     public boolean isEmpty() {
         return size == 0;
     }
-    
+
     @Override
     public boolean contains(Object o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -167,7 +163,6 @@ public class MyArrayList<E> implements List{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
     @Override
     public boolean containsAll(Collection c) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -193,8 +188,6 @@ public class MyArrayList<E> implements List{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-
-
     @Override
     public Object get(int index) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -205,7 +198,6 @@ public class MyArrayList<E> implements List{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
- 
     @Override
     public int indexOf(Object o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -230,5 +222,5 @@ public class MyArrayList<E> implements List{
     public List subList(int fromIndex, int toIndex) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }
