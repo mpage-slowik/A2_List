@@ -29,20 +29,37 @@ public class ListTester {
 
         fill(myLList, N[0]);
         fill(lList, N[0]);
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < N.length-1; i++) {
+            if(N[i] == 10){
+            sb.append("N = ").append(N[i]).append(" \t\t| Insert@start(ms) \t| Insert@end (ms) \t| Insert@random(ms) \t|\r\n");
+            sb.append("MyArrayList \t| ").append(insertStart(myArr, N[i])).append(" \t\t\t| ").append(insertEnd(myArr, N[i])).append(" \t\t\t| ").append(insertRandom(myArr, N[i])).append(" \t\t\t|\r\n");
+            sb.append("ArrayList \t| ").append(insertStart(arr, N[i])).append(" \t\t\t| ").append(insertEnd(arr, N[i])).append(" \t\t\t| ").append(insertRandom(arr, N[i])).append(" \t\t\t|\r\n");
+            sb.append("MyLinkedList \t| ").append(insertStart(myLList, N[i])).append(" \t\t\t| ").append(insertEnd(myLList, N[i])).append(" \t\t\t| ").append(insertRandom(myLList, N[i])).append(" \t\t\t|\r\n");
+            sb.append("LinkedList \t| ").append(insertStart(lList, N[i])).append(" \t\t\t| ").append(insertEnd(lList, N[i])).append(" \t\t\t| ").append(insertRandom(lList, N[i])).append(" \t\t\t|\r\n");
 
-        for (int i = 0; i < N.length - 1; i++) {
-            System.out.println("N = " + N[i] + " | " + "Insert@start(ms) | Insert@end (ms) | Insert@random(ms) |");
-            System.out.println("MyArrayList | " + insertStart(myArr, N[i]) + " | " + insertEnd(myArr, N[i]) + " | " + insertRandom(myArr, N[i]) + " |");
-            System.out.println("ArrayList | " + insertStart(arr, N[i]) + " | " + insertEnd(arr, N[i]) + " | " + insertRandom(arr, N[i]) + " |");
-            System.out.println("MyLinkedList | " + insertStart(myLList, N[i]) + " | " + insertEnd(myLList, N[i]) + " | " + insertRandom(myLList, N[i]) + " |");
-            System.out.println("LinkedList | " + insertStart(lList, N[i]) + " | " + insertEnd(lList, N[i]) + " | " + insertRandom(lList, N[i]) + " |");
+            sb.append("N = ").append(N[i]).append(" \t\t| Remove@start(ms) \t| Remove@end (ms) \t| Remove@random(ms) \t| Remove byvalue (ms) \t|\r\n");
+            sb.append("MyArrayList \t| ").append(removeStart(myArr, N[i])).append(" \t\t\t| ").append(removeEnd(myArr, N[i])).append(" \t\t\t| ").append(removeRandom(myArr, N[i])).append(" \t\t\t| ").append(removeByValue(myArr, N[i])).append(" \t\t\t|\r\n");
+            sb.append("ArrayList \t| ").append(removeStart(arr, N[i])).append(" \t\t\t| ").append(removeEnd(arr, N[i])).append(" \t\t\t| ").append(removeRandom(arr, N[i])).append(" \t\t\t| ").append(removeByValue(arr, N[i])).append(" \t\t\t|\r\n");
+            sb.append("MyLinkedList \t| ").append(removeStart(myLList, N[i])).append(" \t\t\t| ").append(removeEnd(myLList, N[i])).append(" \t\t\t| ").append(removeRandom(myLList, N[i])).append(" \t\t\t| ").append(removeByValue(myLList, N[i])).append(" \t\t\t|\r\n");
+            sb.append("LinkedList \t| ").append(removeStart(lList, N[i])).append(" \t\t\t| ").append(removeEnd(lList, N[i])).append(" \t\t\t| ").append(removeRandom(lList, N[i])).append(" \t\t\t| ").append(removeByValue(lList, N[i])).append(" \t\t\t|\r\n");
+        
+            }else{
+            sb.append("N = ").append(N[i]).append(" \t| Insert@start(ms) \t| Insert@end (ms) \t| Insert@random(ms) \t|\r\n");
+            sb.append("MyArrayList \t| ").append(insertStart(myArr, N[i])).append(" \t\t\t| ").append(insertEnd(myArr, N[i])).append(" \t\t\t| ").append(insertRandom(myArr, N[i])).append(" \t\t\t|\r\n");
+            sb.append("ArrayList \t| ").append(insertStart(arr, N[i])).append(" \t\t\t| ").append(insertEnd(arr, N[i])).append(" \t\t\t| ").append(insertRandom(arr, N[i])).append(" \t\t\t|\r\n");
+            sb.append("MyLinkedList \t| ").append(insertStart(myLList, N[i])).append(" \t\t\t| ").append(insertEnd(myLList, N[i])).append(" \t\t\t| ").append(insertRandom(myLList, N[i])).append(" \t\t\t|\r\n");
+            sb.append("LinkedList \t| ").append(insertStart(lList, N[i])).append(" \t\t\t| ").append(insertEnd(lList, N[i])).append(" \t\t\t| ").append(insertRandom(lList, N[i])).append(" \t\t\t|\r\n");
 
-            System.out.println("N = " + N[i] + " | " + "Remove@start(ms) | Remove@end (ms) | Remove@random(ms) | Remove byvalue (ms) |");
-            System.out.println("MyArrayList | " + removeStart(myArr, N[i]) + " | " + removeEnd(myArr, N[i]) + " | " + removeRandom(myArr, N[i]) + " | " + removeByValue(myArr, N[i]) + " |");
-            System.out.println("ArrayList | " + removeStart(arr, N[i]) + " | " + removeEnd(arr, N[i]) + " | " + removeRandom(arr, N[i]) + " | " + removeByValue(arr, N[i]) + " |");
-            System.out.println("MyLinkedList | " + removeStart(myLList, N[i]) + " | " + removeEnd(myLList, N[i]) + " | " + removeRandom(myLList, N[i]) + " | " + removeByValue(myLList, N[i]) + " |");
-            System.out.println("LinkedList | " + removeStart(lList, N[i]) + " | " + removeEnd(lList, N[i]) + " | " + removeRandom(lList, N[i]) + " | " + removeByValue(lList, N[i]) + " |");
+            sb.append("N = ").append(N[i]).append(" \t| Remove@start(ms) \t| Remove@end (ms) \t| Remove@random(ms) \t| Remove byvalue (ms) \t|\r\n");
+            sb.append("MyArrayList \t| ").append(removeStart(myArr, N[i])).append(" \t\t\t| ").append(removeEnd(myArr, N[i])).append(" \t\t\t| ").append(removeRandom(myArr, N[i])).append(" \t\t\t| ").append(removeByValue(myArr, N[i])).append(" \t\t\t|\r\n");
+            sb.append("ArrayList \t| ").append(removeStart(arr, N[i])).append(" \t\t\t| ").append(removeEnd(arr, N[i])).append(" \t\t\t| ").append(removeRandom(arr, N[i])).append(" \t\t\t| ").append(removeByValue(arr, N[i])).append(" \t\t\t|\r\n");
+            sb.append("MyLinkedList \t| ").append(removeStart(myLList, N[i])).append(" \t\t\t| ").append(removeEnd(myLList, N[i])).append(" \t\t\t| ").append(removeRandom(myLList, N[i])).append(" \t\t\t| ").append(removeByValue(myLList, N[i])).append(" \t\t\t|\r\n");
+            sb.append("LinkedList \t| ").append(removeStart(lList, N[i])).append(" \t\t\t| ").append(removeEnd(lList, N[i])).append(" \t\t\t| ").append(removeRandom(lList, N[i])).append(" \t\t\t| ").append(removeByValue(lList, N[i])).append(" \t\t\t|\r\n");
+        
+            }
         }
+        Utilities.WriteToFile(sb.toString());
     }
 
     private static void fill(List<Integer> list, int N) {

@@ -1,0 +1,50 @@
+N = 10 		| Insert@start(ms) 	| Insert@end (ms) 	| Insert@random(ms) 	|
+MyArrayList 	| 0 			| 0 			| 0 			|
+ArrayList 	| 0 			| 0 			| 0 			|
+MyLinkedList 	| 0 			| 0 			| 0 			|
+LinkedList 	| 0 			| 0 			| 0 			|
+N = 10 		| Remove@start(ms) 	| Remove@end (ms) 	| Remove@random(ms) 	| Remove byvalue (ms) 	|
+MyArrayList 	| 0 			| 0 			| 0 			| 0 			|
+ArrayList 	| 0 			| 0 			| 0 			| 0 			|
+MyLinkedList 	| 0 			| 0 			| 0 			| 0 			|
+LinkedList 	| 0 			| 0 			| 0 			| 0 			|
+N = 100 	| Insert@start(ms) 	| Insert@end (ms) 	| Insert@random(ms) 	|
+MyArrayList 	| 0 			| 2 			| 0 			|
+ArrayList 	| 0 			| 0 			| 0 			|
+MyLinkedList 	| 0 			| 1 			| 0 			|
+LinkedList 	| 0 			| 0 			| 0 			|
+N = 100 	| Remove@start(ms) 	| Remove@end (ms) 	| Remove@random(ms) 	| Remove byvalue (ms) 	|
+MyArrayList 	| 0 			| 0 			| 0 			| 0 			|
+ArrayList 	| 0 			| 0 			| 0 			| 0 			|
+MyLinkedList 	| 0 			| 0 			| 0 			| 0 			|
+LinkedList 	| 0 			| 0 			| 0 			| 0 			|
+N = 1000 	| Insert@start(ms) 	| Insert@end (ms) 	| Insert@random(ms) 	|
+MyArrayList 	| 5 			| 12 			| 6 			|
+ArrayList 	| 1 			| 0 			| 0 			|
+MyLinkedList 	| 1 			| 5 			| 4 			|
+LinkedList 	| 0 			| 0 			| 2 			|
+N = 1000 	| Remove@start(ms) 	| Remove@end (ms) 	| Remove@random(ms) 	| Remove byvalue (ms) 	|
+MyArrayList 	| 0 			| 1 			| 0 			| 0 			|
+ArrayList 	| 0 			| 0 			| 0 			| 0 			|
+MyLinkedList 	| 0 			| 0 			| 0 			| 0 			|
+LinkedList 	| 0 			| 0 			| 0 			| 0 			|
+N = 10000 	| Insert@start(ms) 	| Insert@end (ms) 	| Insert@random(ms) 	|
+MyArrayList 	| 113 			| 247 			| 339 			|
+ArrayList 	| 7 			| 1 			| 12 			|
+MyLinkedList 	| 1 			| 425 			| 587 			|
+LinkedList 	| 0 			| 1 			| 269 			|
+N = 10000 	| Remove@start(ms) 	| Remove@end (ms) 	| Remove@random(ms) 	| Remove byvalue (ms) 	|
+MyArrayList 	| 1 			| 1 			| 0 			| 1 			|
+ArrayList 	| 0 			| 0 			| 0 			| 0 			|
+MyLinkedList 	| 0 			| 1 			| 0 			| 0 			|
+LinkedList 	| 0 			| 0 			| 0 			| 0 			|
+N = 100000 	| Insert@start(ms) 	| Insert@end (ms) 	| Insert@random(ms) 	|
+MyArrayList 	| 9594 			| 27554 			| 41656 			|
+ArrayList 	| 870 			| 5 			| 1604 			|
+MyLinkedList 	| 10 			| 76128 			| 145309 			|
+LinkedList 	| 5 			| 5 			| 53651 			|
+N = 100000 	| Remove@start(ms) 	| Remove@end (ms) 	| Remove@random(ms) 	| Remove byvalue (ms) 	|
+MyArrayList 	| 6 			| 3 			| 3 			| 2 			|
+ArrayList 	| 0 			| 0 			| 1 			| 2 			|
+MyLinkedList 	| 0 			| 0 			| 5 			| 3 			|
+LinkedList 	| 0 			| 0 			| 3 			| 4 			|
