@@ -8,7 +8,6 @@ import java.util.ListIterator;
 /**
  *
  * @author Max Page-Slowik
- * @author Jesse Silber
  */
 public class MyLinkedList<E> implements List {
 
